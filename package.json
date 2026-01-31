@@ -1,0 +1,55 @@
+{
+  "name": "slidev-mcp-apps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:mcp-app": "INPUT=mcp-app.html vite build",
+    "build:all": "npm run build && npm run build:mcp-app",
+    "docker:build": "docker build -t slidev-mcp .",
+    "docker:run": "docker run -it --rm -p 8000:8000 slidev-mcp",
+    "docker:run:stdio": "docker run -it --rm slidev-mcp node build/index.js --stdio",
+    "slidev": "slidev",
+    "slidev:export": "slidev export",
+    "slidev:export-png": "slidev export --format png",
+    "slidev:export-pptx": "slidev export --format pptx",
+    "slidev:format": "slidev format",
+    "playwright": "playwright",
+    "playwright:install-deps": "playwright install-deps chromium"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "slidev-mcp": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "dependencies": {
+    "@hono/mcp": "^0.2.3",
+    "@modelcontextprotocol/ext-apps": "^1.0.1",
+    "@modelcontextprotocol/sdk": "^1.25.3",
+    "@slidev/cli": "^52.11.4",
+    "@slidev/theme-apple-basic": "^0.25.1",
+    "@slidev/theme-bricks": "^0.25.0",
+    "@slidev/theme-default": "^0.25.0",
+    "@slidev/theme-seriph": "^0.25.0",
+    "@slidev/theme-shibainu": "^0.25.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.1.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "playwright-chromium": "^1.58.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}

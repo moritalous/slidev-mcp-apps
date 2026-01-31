@@ -1,0 +1,172 @@
+<!-- mcp-app.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Slide Generator</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 16px;
+        background-color: var(--color-background-primary, #ffffff);
+        color: var(--color-text-primary, #000000);
+        font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .panel {
+        background-color: var(--color-background-secondary, #f8f9fa);
+        border: 1px solid var(--color-border-primary, #e0e0e0);
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+
+      .section {
+        margin-bottom: 18px;
+      }
+
+      .section:last-child {
+        margin-bottom: 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--color-text-primary, #000000);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.8;
+      }
+
+      textarea, select {
+        font-family: inherit;
+        font-size: inherit;
+        color: var(--color-text-primary, #000000);
+        background-color: var(--color-background-primary, #ffffff);
+        border: 1px solid var(--color-border-primary, #d0d0d0);
+        border-radius: 6px;
+        padding: 10px;
+        transition: all 0.2s ease;
+      }
+
+      textarea:focus, select:focus {
+        outline: none;
+        border-color: var(--color-background-interactive, #0066cc);
+        box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+      }
+
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        resize: vertical;
+        font-family: monospace;
+        font-size: 12px;
+      }
+
+      select {
+        cursor: pointer;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        flex: 1;
+        min-width: 150px;
+        padding: 12px 16px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      #generate-slides-btn {
+        background-color: var(--color-background-interactive, #0066cc);
+        color: var(--color-text-interactive, #ffffff);
+      }
+
+      #generate-slides-btn:hover:not(:disabled) {
+        background-color: var(--color-background-interactive, #0052a3);
+        box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+      }
+
+      #generate-pdf-btn {
+        background-color: #10b981;
+        color: #ffffff;
+      }
+
+      #generate-pdf-btn:hover:not(:disabled) {
+        background-color: #059669;
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+      }
+
+      #generate-pptx-btn {
+        background-color: #8b5cf6;
+        color: #ffffff;
+      }
+
+      #generate-pptx-btn:hover:not(:disabled) {
+        background-color: #7c3aed;
+        box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+      }
+
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      #pdf-status {
+        color: var(--color-text-secondary, #666666);
+        margin-top: 12px;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      #slides-container {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slides-container"></div>
+
+    <div class="panel">
+      <div class="section">
+        <label for="markdown-input">Markdown</label>
+        <textarea id="markdown-input" style="height: 150px;" placeholder="Enter your Slidev markdown here..."></textarea>
+      </div>
+
+      <div class="section">
+        <label for="theme-select">Theme</label>
+        <select id="theme-select">
+          <option value="default">Default</option>
+          <option value="bricks">Bricks</option>
+          <option value="apple-basic">Apple Basic</option>
+          <option value="seriph">Seriph</option>
+          <option value="shibainu">Shiba Inu</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button id="generate-slides-btn">Regenerate with Theme</button>
+        <button id="generate-pdf-btn">Generate PDF</button>
+        <button id="generate-pptx-btn">Generate PPTX</button>
+      </div>
+
+      <div id="pdf-status"></div>
+    </div>
+    <script type="module" src="/src/mcp-app.ts"></script>
+  </body>
+</html>
